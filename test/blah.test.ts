@@ -1,6 +1,16 @@
 import { eventBus } from '../src';
 
-describe('blah', () => {
-  it('works', () => {
+describe('on', () => {
+  it('测试回调', done => {
+    eventBus.on('change', (res: string) => {
+      console.log(res);
+      try {
+        expect(res).toBe('test');
+        done();
+      } catch (error) {
+        done(error);
+      }
+    });
+    eventBus.emit('change', 'test');
   });
 });

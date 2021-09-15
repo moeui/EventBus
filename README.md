@@ -2,25 +2,25 @@
 
 ## Install
 ```js
-yarn add @moeui/EventBus 
+yarn add @moeui/event-bus 
 
 // or 
 
-npm i @moeui/EventBus
+npm i @moeui/event-bus
 ```
 
 ## Use
 
 ``` HTML
 /* A组件*/
-import {eventBus} from '@moeui/EventBus'
+import {eventBus} from '@moeui/event-bus'
 
 eventBus.on('name', handle)
 ```
 
 ``` HTML
 /* B组件*/
-import {eventBus} from '@moeui/EventBus'
+import {eventBus} from '@moeui/event-bus'
 
 eventBus.emit('name', ...args)
 ```

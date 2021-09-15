@@ -1,7 +1,7 @@
 import { eventBus } from '../src';
 
-describe('on', () => {
-  it('测试回调', done => {
+describe('eventBus on', () => {
+  it('works', done => {
     eventBus.on('change', (res: string) => {
       console.log(res);
       try {

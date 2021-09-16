@@ -44,7 +44,7 @@ export class EventBus {
    * @param {callback} callback Callback of the to be checked event
    * @param {object} scope Scope of the to be checked event
    */
-  has(type: string, callback: Function, scope: any): Boolean {
+  has(type: string, callback: Function, scope?: any): Boolean {
       if (typeof this.events[type] === "undefined") { // Check if the passed type even exists
           return false; // If not, quit method
       }
@@ -86,6 +86,14 @@ export class EventBus {
               event.callback.apply(event.scope, [bag, ...args, ...event.args]); // Call callback
           }
       }
+  }
+
+  once(type: string, callback: Function, scope?: any, ...args: any[]) {
+    const onceFn = (...args1: any[]) => {
+        callback.apply(scope, args1)
+        this.off(type, onceFn)
+    }
+    this.on(type, onceFn, scope, args)
   }
 
   debug(): string {
